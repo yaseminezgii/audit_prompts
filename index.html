@@ -386,6 +386,44 @@
       color: #000;
       transform: translateY(-2px);
     }
+
+    /* FOOTER: ABOUT, CONTRIBUTING, LINKS - GRID LAYOUT */
+    .footer-section {
+      background: #1f1f1f;
+      border-top: 2px solid #2a2a2a;
+      padding: 16px 24px;
+      /* Instead of flex, use grid with 3 columns (auto-fit or auto-fill) */
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 32px;
+    }
+    .footer-col h2 {
+      margin: 0 0 6px;
+      font-size: 1rem;
+      color: var(--accent-color-2);
+    }
+    .footer-col p {
+      margin: 0 0 8px;
+      font-size: 0.85rem;
+      line-height: 1.4;
+      color: #aaa;
+    }
+    .footer-col a {
+      color: var(--accent-color-2);
+      text-decoration: none;
+    }
+    .footer-col a:hover {
+      text-decoration: underline;
+    }
+    .footer-col ul {
+      list-style: none;
+      margin: 0; 
+      padding: 0;
+    }
+    .footer-col li {
+      margin-bottom: 6px;
+      font-size: 0.85rem;
+    }
   </style>
 </head>
 <body>
@@ -486,6 +524,44 @@
     </div>
   </div>
 
+  <!-- FOOTER: About, Contributing, Links -->
+  <div class="footer-section">
+    <div class="footer-col">
+      <h2>About</h2>
+      <p>
+        This site is created by
+        <a href="https://www.linkedin.com/in/yasemin-oztas/" target="_blank">
+          Yasemin Öztaş
+        </a>.
+        It's a curated list of Audit Prompts for various AI platforms, focusing on
+        IT and Business audits.
+      </p>
+    </div>
+    <div class="footer-col">
+      <h2>Contributing</h2>
+      <p>
+        If you'd like to add new prompts, please fill out our
+        <a href="https://forms.gle/ZQEiy8JLecKpVfEq9" target="_blank">Google Form</a>.
+        We will periodically review submissions and update the domain-prompts.xlsx file.
+      </p>
+    </div>
+    <div class="footer-col">
+      <h2>Links</h2>
+      <ul>
+        <li>
+          <a href="https://github.com/yaseminezgii" target="_blank">
+            GitHub Repository
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/yasemin-oztas/" target="_blank">
+            LinkedIn
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
   <script>
     /* PLATFORM CONFIG */
     const platformConfig = {
@@ -535,7 +611,6 @@
 
     async function loadXlsx() {
       try {
-        // Nocache param => tarayıcı önbellek önleme
         const response = await fetch("domain-prompts.xlsx?nocache=" + new Date().getTime());
         if (!response.ok) throw new Error("XLSX file could not be fetched");
         const arrayBuffer = await response.arrayBuffer();
@@ -688,7 +763,7 @@
       filteredPrompts = allPrompts.filter(item => {
         const domainMatch = currentDomain ? (item.domain === currentDomain) : true;
 
-        // Search domain, prompt, keywords
+        // search domain, prompt, keywords
         const textMatch = (
           item.domain.toLowerCase().includes(query) ||
           item.prompt.toLowerCase().includes(query) ||
@@ -717,7 +792,7 @@
       const platformName = platformConfig[selectedPlatform].name || "AI";
       modalChatBtn.textContent = `>_ Chat with ${platformName}`;
 
-      // Variables
+      // Check variables
       const vars = extractVariables(content);
       if (vars.length > 0) {
         const form = createVariableInputs(vars, variableContainer);
