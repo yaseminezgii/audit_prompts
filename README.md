@@ -13,7 +13,7 @@ A curated collection of **scenario-based AI prompts** designed to help learners 
 ---
 
 ## Overview
-This repository hosts a set of **security & compliance–focused prompts** for various AI platforms (e.g., ChatGPT, Claude, DeepSeek, and more). By using these prompts, you can streamline your study and practice sessions for certifications like **CISSP**, **CISA**, **CISM**, **CEH**, **CompTIA Security+**, and beyond.
+This repository hosts a set of **security & compliance–focused prompts** for various AI platforms (e.g., ChatGPT, Claude, DeepSeek, and more). By using these prompts, you can streamline your study and practice sessions for certifications like **CISSP**, **CISA**, **CISM**, **CIA**, **CEH**, **CompTIA Security+**, and beyond.
 
 **Key features include:**
 - A central **XLSX file** (`domain-prompts.xlsx`) storing domain, prompt text, certification relevance, and keywords.  
