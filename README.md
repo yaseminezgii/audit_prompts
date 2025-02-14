@@ -1,10 +1,10 @@
-# Audit Prompts Directory
+# Security & Compliance Prompts Directory
 
-A curated collection of specialized prompts designed to help auditors perform **IT** and **Business** audits more efficiently with AI tools. These prompts are domain-specific, enabling you to tackle real-world auditing scenarios with tailored AI interactions.
+A curated collection of **scenario-based AI prompts** designed to help learners and professionals preparing for **CISSP**, **CISA**, **CISM**, **CEH**, **CompTIA Security+**, and other security-related certifications. These prompts are domain-specific, enabling you to tackle real-world security and compliance challenges with tailored AI interactions.
 
 ## Table of Contents
 - [Overview](#overview)
-- [Why Domain-Specific Prompts?](#why-domain-specific-prompts)
+- [Why Scenario-Based Prompts?](#why-scenario-based-prompts)
 - [Project Goals](#project-goals)
 - [Benefits of Contributing](#benefits-of-contributing)
 - [How to Contribute](#how-to-contribute)
@@ -13,37 +13,58 @@ A curated collection of specialized prompts designed to help auditors perform **
 ---
 
 ## Overview
-This repository hosts a set of **audit-focused prompts** for various AI platforms (e.g., ChatGPT, Claude, DeepSeek, and more). By using these prompts, auditors can streamline tasks like **risk assessments**, **compliance checks**, and **vendor management** in a structured manner.
+This repository hosts a set of **security & compliance–focused prompts** for various AI platforms (e.g., ChatGPT, Claude, DeepSeek, and more). By using these prompts, you can streamline your study and practice sessions for certifications like **CISSP**, **CISA**, **CISM**, **CEH**, **CompTIA Security+**, and beyond.
 
 **Key features include:**
-- A central **XLSX file** (`domain-prompts.xlsx`) storing domain, prompt, audit type, and keywords.  
-- A **web interface** (via GitHub Pages) that filters and displays these prompts, allowing you to quickly find the one that best suits your scenario.  
+- A central **XLSX file** (`domain-prompts.xlsx`) storing domain, prompt text, certification relevance, and keywords.  
+- A **web interface** (via GitHub Pages) that filters and displays these prompts, allowing you to quickly find the one that best suits your study scenario.  
 - A **Google Form** integration for community-driven prompt submissions.
 
 ---
 
-## Why Domain-Specific Prompts?
-Many AI prompt collections focus on general or broad use cases. Our approach is **specialized** for auditing scenarios, delivering:
-1. **High Relevance**: Auditing has unique terminology, regulations, and best practices. Domain-specific prompts yield more accurate AI responses.  
-2. **Efficiency**: Pre-built prompts save time; you don’t have to craft or fine-tune from scratch.  
-3. **Consistency**: Reusing proven prompts ensures your auditing workflow remains standardized and compliant.  
-4. **Real-World Scenarios**: Each prompt addresses a concrete auditing need (e.g., IT security checks, business process reviews, compliance frameworks, etc.).
+## Why Scenario-Based Prompts?
+Many AI prompt collections focus on broad or generic use cases. Our approach is **specialized** for security and compliance certifications, delivering:
+
+1. **High Relevance**  
+   CISSP, CISA, CISM, CEH, and Security+ exams emphasize real-world scenarios. Scenario-based prompts yield more accurate AI responses aligned with these certifications’ domains.
+
+2. **Efficiency**  
+   Pre-built prompts save you time; you don’t have to craft or fine-tune from scratch. Simply select a scenario that matches your study goal.
+
+3. **Consistency**  
+   Reusing proven prompts ensures your learning workflow remains structured and aligned with certification objectives.
+
+4. **Real-World Scenarios**  
+   Each prompt addresses a concrete security or compliance need (e.g., identity management, network security, risk assessment, incident response), mirroring the tasks and challenges you’ll encounter both on exams and in professional settings.
 
 ---
 
 ## Project Goals
-- **Empower Auditors**: Provide a quick and reliable way to leverage AI during audit tasks, from scoping to reporting.  
-- **Encourage Collaboration**: Build a community-driven repository where auditors, risk managers, and AI enthusiasts share specialized prompts.  
-- **Maintain Quality**: Keep the prompts up-to-date with the latest regulations, standards, and best practices (e.g., ISO 27001, PCI-DSS, etc.).
+- **Empower Learners**  
+  Provide a quick and reliable way to leverage AI for study and skill development across multiple security certifications.
+
+- **Encourage Collaboration**  
+  Build a community-driven repository where learners, practitioners, and AI enthusiasts share specialized prompts for certification prep.
+
+- **Maintain Quality**  
+  Keep the prompts up-to-date with the latest standards and best practices (e.g., ISO 27001, PCI-DSS, NIST frameworks) to ensure they remain relevant for evolving exam outlines.
 
 ---
 
 ## Benefits of Contributing
 By contributing prompts, you:
-- **Shape the Future**: Influence how AI is applied in real-world audit tasks, helping others benefit from your expertise.  
-- **Gain Visibility**: Contributors are recognized in the repository and can link back to their own profiles or websites.  
-- **Enhance Your Skills**: Writing domain-specific prompts improves your understanding of both auditing procedures and AI prompt engineering.  
-- **Foster Collaboration**: Join a growing network of professionals and enthusiasts working to refine audit processes with AI.
+
+- **Shape the Future**  
+  Influence how AI is applied in real-world security certification prep, helping others benefit from your expertise.
+
+- **Gain Visibility**  
+  Contributors are recognized in the repository and can link back to their own profiles or websites.
+
+- **Enhance Your Skills**  
+  Writing scenario-based prompts improves your understanding of both exam domains and AI prompt engineering.
+
+- **Foster Collaboration**  
+  Join a growing network of professionals and enthusiasts working to refine governance, risk, and compliance processes with AI.
 
 ---
 
@@ -52,7 +73,7 @@ We welcome new prompts, improvements, or general feedback. To add your prompt:
 
 1. **Fill Out the Google Form**  
    - [Submit a New Prompt](https://forms.gle/ZQEiy8JLecKpVfEq9)  
-   - Provide your prompt details: Domain, Prompt text, Audit Type, Keywords, etc.
+   - Provide your prompt details: Domain, Prompt text, relevant certification area, keywords, etc.
 
 2. **Review Process**  
    - Our team periodically checks new form submissions.  
@@ -68,5 +89,5 @@ This project is distributed under the [MIT License](LICENSE). By contributing, y
 
 ---
 
-Thank you for your interest in the **Audit Prompts Directory**!  
-We look forward to your **feedback** and **contributions**. Together, we can simplify the audit process and ensure high-quality AI-driven insights.
+Thank you for your interest in the **Security & Compliance Prompts Directory**!  
+We look forward to your **feedback** and **contributions**. Together, we can simplify certification study and ensure high-quality AI-driven insights.
