@@ -51,7 +51,7 @@ By contributing prompts, you:
 We welcome new prompts, improvements, or general feedback. To add your prompt:
 
 1. **Fill Out the Google Form**  
-   - [Submit a New Prompt](https://forms.gle/YourGoogleFormLinkHere)  
+   - [Submit a New Prompt](https://forms.gle/ZQEiy8JLecKpVfEq9)  
    - Provide your prompt details: Domain, Prompt text, Audit Type, Keywords, etc.
 
 2. **Review Process**  
