@@ -26,7 +26,7 @@ This repository hosts a set of **security & compliance–focused prompts** for v
 Many AI prompt collections focus on broad or generic use cases. Our approach is **specialized** for security and compliance certifications, delivering:
 
 1. **High Relevance**  
-   CISSP, CISA, CISM, CEH, and Security+ exams emphasize real-world scenarios. Scenario-based prompts yield more accurate AI responses aligned with these certifications’ domains.
+   CISSP, CISA, CISM, CEH, CIA and Security+ exams emphasize real-world scenarios. Scenario-based prompts yield more accurate AI responses aligned with these certifications’ domains.
 
 2. **Efficiency**  
    Pre-built prompts save you time; you don’t have to craft or fine-tune from scratch. Simply select a scenario that matches your study goal.
