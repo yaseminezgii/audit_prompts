@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <!-- IMPORTANT for Mobile Responsiveness -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Security & Compliance Prompts</title>
   <!-- SheetJS (xlsx) -->
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
@@ -29,10 +32,7 @@
       font-family: var(--font-family);
       background: var(--bg-color);
       color: var(--text-color);
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
+      /* Removed fixed 100vh and overflow hidden to allow normal scrolling */
     }
 
     /* HEADER */
@@ -56,10 +56,15 @@
       color: var(--accent-color);
       font-weight: 400;
     }
+    .sub-heading {
+      font-size: 0.85rem;
+      color: #ccc;
+    }
     .header-right {
       display: flex;
       align-items: center;
       gap: 16px;
+      flex-wrap: wrap; /* Allows wrapping on mobile */
     }
     .search-container input {
       background: #222;
@@ -101,6 +106,7 @@
     .platform-bar {
       display: flex;
       gap: 8px;
+      flex-wrap: wrap; /* Wrap if needed on smaller screens */
     }
     .platform-tag {
       background: transparent;
@@ -125,8 +131,8 @@
 
     /* LAYOUT: SIDEBAR + MAIN */
     .content {
-      flex: 1;
       display: flex;
+      min-height: 80vh; /* Let the content determine the height */
       overflow: hidden;
     }
     .sidebar {
@@ -340,10 +346,8 @@
     /* ADD PROMPT IFRAME OVERLAY */
     .add-prompt-overlay {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background: rgba(0,0,0,0.7);
       display: none;
       align-items: center;
@@ -424,6 +428,57 @@
     .footer-col li {
       margin-bottom: 6px;
       font-size: 0.85rem;
+    }
+
+    /* MOBILE-FRIENDLY MEDIA QUERIES */
+
+    /* Up to tablet size */
+    @media (max-width: 768px) {
+      /* Make header stack vertically */
+      .top-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .header-left, .header-right {
+        width: 100%;
+      }
+
+      /* Sidebar becomes full-width on top, main below */
+      .content {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 2px solid #2a2a2a;
+        max-height: 200px;
+        overflow-y: auto;
+      }
+      .main {
+        width: 100%;
+        overflow: visible;
+      }
+
+      /* Prompt grid narrower columns if needed */
+      .prompt-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+    }
+
+    /* Even smaller (mobile) */
+    @media (max-width: 480px) {
+      .prompt-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      }
+      .search-container input {
+        width: 100%; /* Full width search on smaller screens */
+      }
+      .header-right {
+        gap: 10px;
+      }
+      .platform-bar {
+        gap: 6px;
+      }
     }
   </style>
 </head>
@@ -527,7 +582,7 @@
   <!-- ADD PROMPT IFRAME (GOOGLE FORM) -->
   <div class="add-prompt-overlay" id="addPromptOverlay">
     <div class="add-prompt-modal">
-      <!-- Gömülü Google Form -->
+      <!-- Embedded Google Form -->
       <iframe
         src="https://forms.gle/ZQEiy8JLecKpVfEq9?embedded=true"
         scrolling="yes"
@@ -535,7 +590,7 @@
         Loading…
       </iframe>
 
-      <!-- Kapat Butonu -->
+      <!-- Close Button -->
       <button class="close-form-button" onclick="closeAddPromptModal()">
         Close
       </button>
@@ -618,7 +673,6 @@
     let allPrompts = [];
     let filteredPrompts = [];
     let currentDomain = null;
-    let currentPromptOriginal = "";
     let selectedPromptType = "All";
 
     document.addEventListener("DOMContentLoaded", async () => {
@@ -691,8 +745,8 @@
         tag.classList.toggle("active", isActive);
       });
       const modalChatBtn = document.getElementById("modalChatBtn");
-      if (modalChatBtn) {
-        const platformName = platformConfig[selectedPlatform].name || "AI";
+      if (modalChatBtn && platformConfig[selectedPlatform]) {
+        const platformName = platformConfig[selectedPlatform].name;
         modalChatBtn.textContent = `>_ Chat with ${platformName}`;
       }
     }
@@ -808,8 +862,9 @@
       modalContributor.textContent = "";
       modalTitle.textContent = title;
 
-      const platformName = platformConfig[selectedPlatform].name || "AI";
-      modalChatBtn.textContent = `>_ Chat with ${platformName}`;
+      if (platformConfig[selectedPlatform]) {
+        modalChatBtn.textContent = `>_ Chat with ${platformConfig[selectedPlatform].name}`;
+      }
 
       // Check for placeholders
       const vars = extractVariables(content);
@@ -825,12 +880,13 @@
       }
 
       modalOverlay.style.display = "flex";
-      document.body.style.overflow = "hidden";
+      // Remove body overflow hidden so we can scroll if needed
+      // document.body.style.overflow = "hidden";
     }
     function hideModal() {
       const modalOverlay = document.getElementById("modalOverlay");
       modalOverlay.style.display = "none";
-      document.body.style.overflow = "";
+      // document.body.style.overflow = "";
     }
 
     function extractVariables(text) {
@@ -841,6 +897,7 @@
         const [variable, defaultValue] = match[1].split(":").map(s => s.trim());
         variables.push({ name: variable, default: defaultValue || "" });
       }
+      // Make them unique by variable name
       const uniqueMap = new Map();
       variables.forEach(v => uniqueMap.set(v.name, v));
       return Array.from(uniqueMap.values());
@@ -875,7 +932,7 @@
       const vars = extractVariables(promptText);
       if (!form) {
         vars.forEach(v => {
-          const pattern = new RegExp(`\\$\\{${v.name}[^}]*\\}`, "g");
+          const pattern = new RegExp(`\\\${${v.name}[^}]*}`, "g");
           const replacement = v.default || v.name.toUpperCase();
           preview = preview.replace(pattern, replacement);
         });
@@ -885,7 +942,7 @@
           const variable = input.dataset.variable;
           const def = input.dataset.default;
           const val = input.value.trim() || def || variable;
-          const pattern = new RegExp(`\\$\\{${variable}[^}]*\\}`, "g");
+          const pattern = new RegExp(`\\\${${variable}[^}]*}`, "g");
           preview = preview.replace(pattern, val);
         });
       }
@@ -895,7 +952,7 @@
       let preview = promptText;
       const vars = extractVariables(promptText);
       vars.forEach(v => {
-        const pattern = new RegExp(`\\$\\{${v.name}[^}]*\\}`, "g");
+        const pattern = new RegExp(`\\\${${v.name}[^}]*}`, "g");
         const replacement = v.default || v.name.toUpperCase();
         preview = preview.replace(pattern, replacement);
       });
@@ -925,14 +982,14 @@
       window.open(finalUrl, "_blank");
     }
 
-    /* ADD PROMPT => GÖMÜLÜ GOOGLE FORM */
+    /* ADD PROMPT => Embedded GOOGLE FORM */
     function showAddPromptModal() {
       document.getElementById("addPromptOverlay").style.display = "flex";
-      document.body.style.overflow = "hidden";
+      // document.body.style.overflow = "hidden";
     }
     function closeAddPromptModal() {
       document.getElementById("addPromptOverlay").style.display = "none";
-      document.body.style.overflow = "";
+      // document.body.style.overflow = "";
     }
   </script>
 </body>
